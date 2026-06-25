@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Billing System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-image: url('https://www.abasturhub.com/img/blog/mejores-restaurantes---diseno-sin-titulo.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .item-buttons button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        h1 {
+            font-weight: bold;
+            color: rgb(186, 226, 43);
+            text-decoration: underline;
+        }
+        h2 {
+            text-decoration: underline;
+            color: rgb(186, 226, 43);
+        }
+        h3 {
+            color: rgb(186, 226, 43);
+        }
+        .item-buttons button,button {
+             transition: all 0.3s ease;
+        }
+
+         .item-buttons button:hover,button:hover {
+              background-color: #ff9800;
+              color: white;
+              transform: scale(1.08);
+              box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
+        .bill-btn{
+             padding: 15px 35px;
+             font-size: 20px;
+             font-weight: bold;
+            border-radius: 8px;
+}
+.arrow{
+    margin-left: 8px;
+    animation: moveArrow 1s infinite alternate;
+}
+
+@keyframes moveArrow{
+    from{
+        opacity: 0.3;
+        transform: translateX(0);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(10px);
+    }
+}
+    
+
+    </style>
+</head>
+
+<body>
+<center>
+    <br>
+    <h1>Delicious Food Corner</h1>
+    <br>
+    <h2>MENU</h2>
+
+    <div class="item-buttons">
+
+        <!-- Pizza -->
+        <button onclick="addItem('Small Pizza', 1200)">Small Pizza 🍕</button>
+        <button onclick="addItem('Medium Pizza', 1500)">Medium Pizza 🍕</button>
+        <button onclick="addItem('Large Pizza', 1950)">Large Pizza 🍕</button>
+        <button onclick="addItem('ExtraLarge Pizza', 2200)">ExtraLarge Pizza 🍕</button>
+        <button onclick="addItem('Burger', 1200)">Burger 🍔</button>
+        <br>
+
+        <!-- Other Food -->
+        <button onclick="addItem('Shuwarma', 300)">Shuwarma 🌯</button>
+        <button onclick="addItem('Fries', 200)">Fries 🍟</button>
+        <button onclick="addItem('Crispy Wings', 1200)">Crispy Wings 🍗</button>
+        <button onclick="addItem('Hot Wings', 1000)">Hot Wings 🍗</button>
+
+        <br><br>
+
+        <!-- Shakes -->
+        <h2>SHAKES</h2>
+        <button onclick="addItem('Mango Shake', 200)">Mango Shake 🥂</button>
+        <button onclick="addItem('Apple Shake', 300)">Apple Shake 🥂</button>
+        <button onclick="addItem('Banana Shake', 300)">Banana Shake 🥂</button>
+        <button onclick="addItem('Strawberry Shake', 400)">Strawberry Shake 🥂</button>
+
+        <br>
+
+        <!-- Drinks -->
+        <h2>DRINKS</h2>
+        <button onclick="addItem('Liter CocaCola', 170)">Liter CocaCola 🍷</button>
+        <button onclick="addItem('1.5 Liter CocaCola', 200)">1.5 Liter CocaCola 🍷</button>
+        <button onclick="addItem('Liter Sprite', 170)">Liter Sprite 🍷</button>
+        <button onclick="addItem('1.5 Liter Sprite', 200)">1.5 Liter Sprite 🍷</button>
+        <br>
+        <button onclick="addItem('Liter Fanta', 170)">Liter Fanta 🍷</button>
+        <button onclick="addItem('1.5 Liter Fanta', 200)">1.5 Liter Fanta 🍷</button>
+        <button onclick="addItem('Liter Water', 100)">Liter Water</button>
+        <button onclick="addItem('1.5 Liter Water', 120)">1.5 liter Water</button>
+
+    </div>
+
+    <br>
+    
+    <br>
+    <button class="bill-btn" onclick="window.location.href='bill.html'"> Your Bill <i class="fa-solid fa-arrow-right arrow style="color:black;" "></i> </button>
+
+</center>
+
+
+<script>
+    let items = JSON.parse(localStorage.getItem("billItems")) || [];
+
+    function addItem(name, price) {
+        items.push({ name, price });
+        localStorage.setItem("billItems", JSON.stringify(items));
+      
+    }
+</script>
+
+</body>
+</html>
